@@ -1,0 +1,30 @@
+python process_fomc_llama.py \
+  --data-dir ./omc/training_data \
+  --split-name train \
+  --out-root ./data/doc_features/fomc_llama31_131k \
+  --hf-model meta-llama/Llama-3.1-8B \
+  --sae-release llama_scope_lxr_32x \
+  --layer 20 --window 8192 --overlap 128
+
+
+  python process_fomc_llama.py \
+  --data-dir ./fomc/test_data \
+  --split-name test \
+  --out-root ./data/doc_features/fomc_llama31_131k \
+  --hf-model meta-llama/Llama-3.1-8B \
+  --sae-release llama_scope_lxr_32x \
+  --layer 20 --window 8192 --overlap 128
+
+
+  python process_fomc_qwen.py \
+  --data-dir ./training_data \
+  --split-name train \
+  --out-root ./data/doc_features/fomc_qwen25_131k \
+  --layer 15
+
+
+  python process_fomc_qwen.py \
+    --data-dir ./test_data \
+    --split-name test \
+    --out-root ./data/doc_features/fomc_qwen25_131k \
+    --layer 15
